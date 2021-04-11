@@ -1,6 +1,7 @@
 <?php
 namespace App\Conversations;
 
+use App\Models\Conclusiones;
 use Illuminate\Foundation\Inspiring;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Question;
@@ -20,6 +21,7 @@ class Encuesta extends Conversation
     protected $posicionCuestionario;
     protected $posicionPregunta;
     protected $posicionRespuesta;
+    protected $conclusiones = array();
 
     public function run()
     {
@@ -61,7 +63,7 @@ class Encuesta extends Conversation
                 $this->generarRespuestas();
                 $this->repeat($this->pregunta);
             }else{
-                $this->say('Tu Puntaje es: '.strval($this->puntaje));
+                $this->say($this->mostrarConclusiones());
             };
          });
     }
@@ -74,4 +76,18 @@ class Encuesta extends Conversation
             ]); 
         };
     }
+
+    protected function mostrarConclusiones(){
+        $cuestionario = $this->cuestionario->load('conclusiones');
+        return  $this->buscarConclusion($cuestionario->conclusiones->sortByDesc('puntuacion_min')->values());
+    }
+
+    protected function buscarConclusion($conclusiones){        
+        foreach ($conclusiones as $conclusion){
+             if($this->puntaje >= $conclusion->puntuacion_min){
+                return $conclusion->conclusion;
+            } 
+        }
+    }
 }
+

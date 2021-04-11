@@ -29,7 +29,7 @@
                         
                                 <div class="col-3">
                                     <label for="puntuacion_min">Puntación Minina</label>
-                                    <input name="conclusion[puntuacion_min]" type="number" min="1" class="form-control" id="puntuacion_min"
+                                    <input name="conclusion[puntuacion_min]" type="number" min="0" class="form-control" id="puntuacion_min"
                                             aria-describedby="ayudaPuntuacionMin" {{-- placeholder="Puntaje minimo" --}} value="{{ old('conclusion.puntuacion_min') }}">
                                     <small id="ayudaPuntuacionMin" class="form-text text-muted">Ingresa un valor</small>
 

@@ -38,7 +38,6 @@ class ConclusionesController extends Controller
             'conclusion.puntuacion_min' => 'required',
         ]);
         
-        
         $conclusiones = Conclusiones::where('cuestionario_id', $cuestionario->id)
                                     ->where('puntuacion_min', $data['conclusion']['puntuacion_min'])->get();
 
