@@ -24,9 +24,12 @@ Route::get('/', function () {
 
 Route::get('/tinker', [App\Http\Controllers\BotManController::class, 'tinker'])->name('tinker');
 
-Route::post('/botman', function() {
+/* Route::post('/botman', function() {
     app('botman')->listen();
-});
+});  */
+
+Route::match(['get', 'post'],'/botman', [App\Http\Controllers\BotManController::class,'handle']);
+
 
 Auth::routes();
 

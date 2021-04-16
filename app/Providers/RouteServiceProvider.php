@@ -48,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
 
-        require(base_path('routes/botman.php'));  //agregada para botman
+        //require(base_path('routes/botman.php'));  //agregada para botman
     }
 
     /**

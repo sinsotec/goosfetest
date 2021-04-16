@@ -18,7 +18,7 @@ class CreateCuestionariosTable extends Migration
             $table->id();
             $table->string('titulo')->require;
             $table->string('descripcion')->require;
-            $table->unsignedInteger('activo')->default(1);
+            $table->unsignedInteger('activo')->default(0);
             $table->unsignedInteger('prioridad')->default(100);
             $table->string('id_idioma')->default('es');
             $table->timestamps();
